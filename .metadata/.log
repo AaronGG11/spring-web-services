@@ -1,0 +1,7 @@
+
+!ENTRY org.eclipse.core.resources 4 77 2020-07-15 18:06:29.461
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2020-07-15 18:06:29.461
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2020-07-15 18:06:29.461
+!MESSAGE /Users/aarongarcia/Documents/github/spring-web-services/springboot-in-10-steps overlaps the location of another project: 'springboot-in-10-steps'
