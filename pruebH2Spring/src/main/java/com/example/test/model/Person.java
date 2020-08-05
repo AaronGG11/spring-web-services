@@ -1,6 +1,9 @@
 package com.example.test.model;
 
 import lombok.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -16,12 +19,14 @@ public class Person
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID", columnDefinition = "INT")
+    //@Column(name = "ID", columnDefinition = "INT")
     private Integer ID;
 
-    @Column(name = "nombre", columnDefinition = "VARCHAR(255)")
+    private String prefijo;
+
+    //@Column(name = "nombre", columnDefinition = "VARCHAR(255)")
     private String nombre;
 
-    @Column(name = "edad", columnDefinition = "VARCHAR(255)")
+    //@Column(name = "edad", columnDefinition = "VARCHAR(255)")
     private Integer edad;
 }

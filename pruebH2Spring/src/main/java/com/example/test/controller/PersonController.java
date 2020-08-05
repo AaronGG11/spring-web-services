@@ -1,17 +1,19 @@
 package com.example.test.controller;
 
 import com.example.test.model.Person;
-import com.example.test.service.PersonService;
 import com.example.test.service.PersonServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class PersonController
 {
+    @Value("${person.prefijo}")
+    String prefijo;
+
     @Autowired
     PersonServiceImp personService;
 
@@ -27,6 +29,7 @@ public class PersonController
 
     @PostMapping("/persons")
     public Person createPerson(@RequestBody Person person){
+        person.setPrefijo(prefijo);
         return personService.createPerson(person);
     }
 
