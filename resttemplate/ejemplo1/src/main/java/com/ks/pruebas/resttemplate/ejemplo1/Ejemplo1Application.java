@@ -85,6 +85,7 @@ public class Ejemplo1Application implements CommandLineRunner
 		restTemplate.put(uri,p2);
 		*/
 
+		/*
 		// find all people
 		String url = "http://localhost:8090/ks/persons";
 
@@ -93,6 +94,6 @@ public class Ejemplo1Application implements CommandLineRunner
 
 		Gson gson = new Gson();
 		people.forEach(person -> System.out.println(gson.toJson(person)));
-
+		*/
 	}
 }
