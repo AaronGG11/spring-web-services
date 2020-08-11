@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/ks")
 public class PersonController
 {
     @Value("${person.prefijo}")
@@ -17,44 +20,50 @@ public class PersonController
     @Autowired
     PersonServiceImp personService;
 
+    @RequestMapping(value = "/inicio")
+    public String saludar()
+    {
+        return "Hola mundo";
+    }
+
     @RequestMapping(value = "/persons", method = RequestMethod.GET)
     public List<Person> getAllPersons(){
         return personService.getAllPersons();
     }
 
     @RequestMapping(value = "/persons/{id}", method = RequestMethod.GET)
-    public Person getPersonById(@PathVariable Integer id){
+    public Optional<Person> getPersonById(@Valid @PathVariable Integer id){
         return personService.getPersonById(id);
     }
 
     @PostMapping("/persons")
-    public Person createPerson(@RequestBody Person person){
+    public Person createPerson(@Valid @RequestBody Person person){
         person.setPrefijo(prefijo);
         return personService.createPerson(person);
     }
 
     @PutMapping("/persons")
-    public Person updatePerson(@RequestBody Person person){
+    public Person updatePerson(@Valid @RequestBody Person person){
         return personService.updatePerson(person);
     }
 
     @DeleteMapping("/persons/{id}")
-    public void deletePerson(@PathVariable Integer id){
+    public void deletePerson(@Valid @PathVariable Integer id){
         personService.deletePerson(id);
     }
 
     @GetMapping("/persons/edad/mas/{edad}")
-    public List<Person> getAgeOlderThan(@PathVariable Integer edad){
+    public List<Person> getAgeOlderThan(@Valid @PathVariable Integer edad){
         return personService.getAgeOlderThan(edad);
     }
 
     @GetMapping("/persons/edad/menos/{edad}")
-    public List<Person> getAgeYoungerThan(@PathVariable Integer edad){
+    public List<Person> getAgeYoungerThan(@Valid @PathVariable Integer edad){
         return personService.getAgeOlderThan(edad);
     }
 
     @GetMapping("/persons/nombre/{cadena}")
-    public  List<Person> getPersonBeginsWith(@PathVariable String cadena){
+    public  List<Person> getPersonBeginsWith(@Valid @PathVariable String cadena){
         return personService.getPersonBeginsWith(cadena);
     }
 
