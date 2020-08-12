@@ -55,19 +55,17 @@ public class Ejemplo1Application implements CommandLineRunner
 		p2.setNombre("Saul");
 		p2.setEdad(45);
 		p2.setEmail("srivas@gmail.com");
-
 		String url = "http://localhost:8090/ks/persons";
 		URI uri = new URI(url);
-
 		//ResponseEntity<Person> result = restTemplate.postForEntity(uri,p2,Person.class);
 		restTemplate.postForObject(url,p2,Person.class); // two ways
+
 		*/
 
 		/*
 		// delete a person by id
 		Integer id_search = 1;
 		String url = "http://localhost:8090/ks/persons/" + id_search;
-
 		restTemplate.delete(url); // there are more methods
 		*/
 
@@ -75,25 +73,22 @@ public class Ejemplo1Application implements CommandLineRunner
 		// update a person
 		String url = "http://localhost:8090/ks/persons";
 		URI uri = new URI(url);
-
 		Person p2 = new Person();
 		p2.setID(3);
 		p2.setNombre("Saul");
 		p2.setEdad(45);
 		p2.setEmail("srivas@gmail.com");
-
 		restTemplate.put(uri,p2);
 		*/
 
 		/*
 		// find all people
 		String url = "http://localhost:8090/ks/persons";
-
 		ResponseEntity<Person[]> responseEntity = restTemplate.getForEntity(url, Person[].class);
 		List<Person> people = Arrays.asList(responseEntity.getBody());
-
 		Gson gson = new Gson();
 		people.forEach(person -> System.out.println(gson.toJson(person)));
 		*/
+
 	}
 }

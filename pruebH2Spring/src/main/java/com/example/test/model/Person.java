@@ -17,7 +17,7 @@ public class Person
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer ID;
+    private Integer id;
 
     private String prefijo;
 
@@ -32,7 +32,7 @@ public class Person
     private Integer edad;
 
     @NotEmpty
-    @Email
+    //@Email
     private String email;
 }
 

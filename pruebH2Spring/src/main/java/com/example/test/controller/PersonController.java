@@ -23,7 +23,7 @@ public class PersonController
     @RequestMapping(value = "/inicio")
     public String saludar()
     {
-        return "Hola mundo";
+        return "Hola amigos";
     }
 
     @RequestMapping(value = "/persons", method = RequestMethod.GET)
@@ -70,6 +70,31 @@ public class PersonController
     @GetMapping("/persons/count")
     public Integer getCount(){
         return personService.getCount();
+    }
+
+    @PutMapping("/persons/update/prefijo/{id}/byemail/{email}")
+    public void updateIdByEmail(@PathVariable("id") String id, @PathVariable("email") String email)
+    {
+        personService.updateIdByEmail(id, email);
+    }
+
+    @PutMapping("/persons/cambioedad")
+    public Integer updateAge()
+    {
+        return personService.updateAge();
+    }
+
+
+    @DeleteMapping("/persons/pairs")
+    public void deletePairAges()
+    {
+        personService.deletePairAges();
+    }
+
+    @RequestMapping(value = "/persons/byemail/{email}", method = RequestMethod.GET)
+    public Person getByEmail( @PathVariable String email)
+    {
+        return personService.getByEmail(email);
     }
 
 }

@@ -4,11 +4,13 @@ import com.example.test.model.Person;
 import com.example.test.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PersonServiceImp implements PersonService
 {
     @Autowired
@@ -23,7 +25,7 @@ public class PersonServiceImp implements PersonService
     @Override
     public Person updatePerson(Person person)
     {
-        personRepository.delete(person);
+        personRepository.deleteById(person.getId());
         return personRepository.save(person);
     }
     @Override
@@ -36,6 +38,9 @@ public class PersonServiceImp implements PersonService
     {
         return personRepository.findById(id);
     }
+
+
+
     @Override
     public void deletePerson(Integer id)
     {
@@ -60,5 +65,28 @@ public class PersonServiceImp implements PersonService
     {
         return personRepository.getCount();
     }
+
+    public void updateIdByEmail(String id, String email)
+    {
+        personRepository.updateIdByEmail(id, email);
+    }
+
+    public Integer updateAge()
+    {
+        personRepository.updateAge();
+        return 1;
+    }
+
+    public void deletePairAges()
+    {
+        personRepository.deletePairAges();
+    }
+
+    public Person getByEmail(String email)
+    {
+        return personRepository.getByEmail(email);
+    }
+
+
 
 }
