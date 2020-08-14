@@ -41,13 +41,11 @@ public class App
 
             String url = "http://localhost:8090/ks/persons/update/prefijo/{id}/byemail/{email}";
 
-
-            //find by id
-            String url_search = "http://localhost:8090/ks/persons/byemail/{email}";
-
             Map<String, String> vars = new HashMap<>();
             vars.put("email", email);
 
+            //find by id
+            String url_search = "http://localhost:8090/ks/persons/byemail/{email}";
             Person p1 = restTemplate.getForObject(url_search, Person.class, vars);
 
             Map<String, String> params = new HashMap();
