@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface PersonRepository extends CrudRepository<Person, Integer>
 {
+
     @Query(value = "SELECT * FROM Person WHERE edad > ?1", nativeQuery = true)
     public List<Person> getAgeOlderThan(Integer edad);
 

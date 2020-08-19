@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -39,8 +41,6 @@ class AppTest
     {
         System.out.println("After All ...");
     }
-    */
-
 
     @Test
     @Disabled
@@ -59,7 +59,9 @@ class AppTest
         assertEquals(result, "Bye " + name);
         System.out.println(result);
     }
+    */
 
+    @Disabled
     @Test
     void lambdaExpressions() {
         assertTrue(Stream.of(1, 2, 3)
@@ -67,8 +69,65 @@ class AppTest
                 .sum() > 5, () -> "Sum should be greater than 5");
     }
 
-    Assumptions.assum
+    @Disabled
+    @Test
+    void assertAllExample()
+    {
+        App ap1 = new App("Test", "Java");
 
+        assertAll("Test props",
+                () -> assertEquals(ap1.getName(), "Test"),
+                () -> assertEquals(ap1.getLanguage(), "Java")
+                );
+    }
 
+    @Disabled
+    @Test
+    void assumtionsExample()
+    {
+        Assumptions.assumeTrue("abcZ".contains("Z"));
+    }
+
+    @Disabled
+    @Test
+    void timeOutExample()
+    {
+        assertTimeout(Duration.ofMillis(1000),
+                () -> {Thread.sleep(500);}
+        );
+        System.out.println("Estuve aqui");
+    }
+
+    @Disabled
+    @Test
+    void timeOutPreemExample()
+    {
+        assertTimeoutPreemptively(Duration.ofMillis(1000),
+                () -> {Thread.sleep(200);}
+                );
+        System.out.println("Estuve aqui 1234");
+    }
+
+    // conditional test execution
+    @EnabledOnOs(OS.MAC)
+    @Test
+    void testOnMac()
+    {
+
+    }
+
+    @EnabledOnOs(OS.WINDOWS)
+    @Test
+    void testOnWindows()
+    {
+
+    }
+
+    @EnabledOnOs(OS.LINUX)
+    @Test
+    void testOnLinux()
+    {
+
+    }
 
 }

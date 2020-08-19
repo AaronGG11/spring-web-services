@@ -10,6 +10,9 @@ import javax.validation.constraints.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+
+
 
 @Entity
 @Table
@@ -26,8 +29,8 @@ public class Person
     private String nombre;
 
     @NotNull
-    @Min(value = 0, message = "Edad minima 0 años")
-    @Max(value = 60, message = "Edad maxima 60 años")
+    @Min(value = 0, message = "Edad minima 0 anios")
+    @Max(value = 60, message = "Edad maxima 60 anios")
     @PositiveOrZero
     private Integer edad;
 
