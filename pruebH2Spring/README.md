@@ -1,4 +1,4 @@
-# Mi primer READMI Xd 
+# Mi primer README Xd 
 
 | Nombre | Descripcion | 
 |---|---|
