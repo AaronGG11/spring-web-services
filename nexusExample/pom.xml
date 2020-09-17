@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.5.BUILD-SNAPSHOT</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.nexus.example</groupId>
+	<artifactId>nexusExample</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>nexusExample</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!--
+		Importar dependencia desde nexus.
+		Para que esto funcione primero en el archivo settings.xml hay que configurar el repositorio mediante:
+
+			<mirrors>
+				<mirror>
+					<id>central</id>
+					<name>central</name>
+					<url>URL_REPO</url>
+					<mirrorOf>*</mirrorOf>
+				</mirror>
+			</mirrors>
+
+		*** URL_REPO -> Se puede obtener desde la interfaz de nexus en el navegador:
+			1. Barra superior de navegacion -> Server Administration and configuration (Icono de configuracion)
+			2. Barra lateral de navegacion -> Repository -> repositories
+			3. Elegir el repositorio
+			4. Copiar y pegar URL de repositorio en <url>
+
+		Definir la dependencia en pom.xml, la cual se puede copiar desde la interfaz del navegador de nexus:
+			1. Barra superior de navegacion -> Browser server contents (Icono de caja)
+			2. Browse
+			3. Elegir el repositorio
+			4. Copiar y pegar la dependencia.
+
+			<dependency>
+				<groupId></groupId>
+				<artifactId></artifactId>
+				<version></version>
+			</dependency>
+
+		Hecho lo anterior, ir a Maven (esquina superior derecha de IntelliJ) -> seleccionar el proyecto
+		sobre el cual se esta trabajando -> Lifecycle -> install
+
+		Debera de comenzar a BAJAR el repositorio a IntelliJ.
+		-->
+		<dependency>
+			<groupId>com.ks.voltage</groupId>
+			<artifactId>voltage-api-java</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+	<!--
+	Para subir un repositorio desde intelliJ, hay que configurar desde el pom del proyecto a subir por
+	medio de las siguientes lineas <distributionManagement> ..., podemos tener dos repositorios diferentes a donde subir, snapshots
+	y release, estos hay que crearlos previamente en la interfaz de nexus en el navegador.
+
+	Tambien es posible subir el .jar directamente desde la interfaz en el navegador.
+
+	Una vez que ya esta configurado el pom.xml, tambien hay que configurar el settings.xml, mediante:
+
+		<servers>
+			<server>
+				<id>nexus-snapshot</id>
+				<username>admin</username>
+				<password>admin123</password>
+			</server>
+		</servers>
+
+	Hecho lo anterior, ir a Maven (esquina superior derecha de IntelliJ) -> seleccionar el proyecto
+	sobre el cual se esta trabajando -> Lifecycle -> deploy.
+
+	Debera de comenzar a subir el repositorio a Nexus, por defecto se sube en snapshots.
+
+
+	-->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshot</id>
+			<url>http://localhost:8081/repository/nexus-testing-deploy-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>nexus-release</id>
+			<url>http://localhost:8081/repository/nexus-testing-deploy-releases/</url>
+		</repository>
+	</distributionManagement>
+
+	<!--
+	Si tiene varios repositorios que quiere agrupar para tener unicamente un URL, hay que crear un
+	repositorio de grupo: maven2(group) y agregar los respositorios a este en el formulario de creacion.
+	-->
+
+</project>
