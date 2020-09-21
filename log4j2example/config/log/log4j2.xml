@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="5">
+
+    <Appenders>
+        <RollingFile name="file-day" fileName="log/Replicador.log" filePattern="log/Replicador-%d{yyyy-MM-dd}.log">
+            <MarkerFilter marker="XML" onMatch="DENY" onMismatch="ACCEPT"/>
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="file-day"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

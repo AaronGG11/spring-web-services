@@ -115,61 +115,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 
 
-	<!--
-	Para subir un repositorio desde intelliJ, hay que configurar desde el pom del proyecto a subir por
-	medio de las siguientes lineas <distributionManagement> ..., podemos tener dos repositorios diferentes a donde subir, snapshots
-	y release, estos hay que crearlos previamente en la interfaz de nexus en el navegador.
-
-	Tambien es posible subir el .jar directamente desde la interfaz en el navegador.
-
-	Una vez que ya esta configurado el pom.xml, tambien hay que configurar el settings.xml, mediante:
-
-		<servers>
-			<server>
-				<id>nexus-snapshot</id>
-				<username>admin</username>
-				<password>admin123</password>
-			</server>
-		</servers>
-
-	Hecho lo anterior, ir a Maven (esquina superior derecha de IntelliJ) -> seleccionar el proyecto
-	sobre el cual se esta trabajando -> Lifecycle -> deploy.
-
-	Debera de comenzar a subir el repositorio a Nexus, por defecto se sube en snapshots.
-
-
-	-->
-	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshot</id>
-			<url>http://localhost:8081/repository/nexus-testing-deploy-snapshots/</url>
-		</snapshotRepository>
-		<repository>
-			<id>nexus-release</id>
-			<url>http://localhost:8081/repository/nexus-testing-deploy-releases/</url>
-		</repository>
-	</distributionManagement>
-
-	<!--
-	Si tiene varios repositorios que quiere agrupar para tener unicamente un URL, hay que crear un
-	repositorio de grupo: maven2(group) y agregar los respositorios a este en el formulario de creacion.
-	-->
 
 </project>

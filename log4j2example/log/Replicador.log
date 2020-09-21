@@ -1,0 +1,18 @@
+17:52:20.048 [main] FATAL com.log4j2.example.log4j2example.Log4j2exampleApplication - fatal log
+17:52:20.053 [main] ERROR com.log4j2.example.log4j2example.Log4j2exampleApplication - error log
+17:52:20.053 [main] WARN  com.log4j2.example.log4j2example.Log4j2exampleApplication - warn log
+17:52:20.054 [main] INFO  com.log4j2.example.log4j2example.Log4j2exampleApplication - info log
+17:52:20.054 [main] DEBUG com.log4j2.example.log4j2example.Log4j2exampleApplication - debug log
+17:52:20.054 [main] TRACE com.log4j2.example.log4j2example.Log4j2exampleApplication - trace log
+17:53:35.268 [main] FATAL com.log4j2.example.log4j2example.Log4j2exampleApplication - fatal log
+17:53:35.274 [main] ERROR com.log4j2.example.log4j2example.Log4j2exampleApplication - error log
+17:53:35.274 [main] WARN  com.log4j2.example.log4j2example.Log4j2exampleApplication - warn log
+17:53:35.275 [main] INFO  com.log4j2.example.log4j2example.Log4j2exampleApplication - info log
+17:53:35.275 [main] DEBUG com.log4j2.example.log4j2example.Log4j2exampleApplication - debug log
+17:53:35.275 [main] TRACE com.log4j2.example.log4j2example.Log4j2exampleApplication - trace log
+17:54:07.403 - fatal log
+17:54:07.408 - error log
+17:54:07.409 - warn log
+17:54:07.409 - info log
+17:54:07.410 - debug log
+17:54:07.410 - trace log
